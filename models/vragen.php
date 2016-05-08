@@ -1,7 +1,7 @@
 <?php
 require('vraag.php');
 
-class vragen{
+class vragen extends ArrayIterator{
      public $vragen = array();
     
     function makeVragen(){
@@ -22,7 +22,7 @@ class vragen{
     }
 
     function next(){
-        return previous($this->vragen);
+        return next($this->vragen);
     }
 
     function getVragen(){
