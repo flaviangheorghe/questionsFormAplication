@@ -2,31 +2,34 @@
 require('vraag.php');
 
 class vragen{
-     public $vragen;
+     public $vragen = array();
     
     function makeVragen(){
        $v = new vraag('persoon','Je zoek een','radio','man, vrouw','radio');
-       $v1 = new vraag('zoek','Ben je een','radio','man,vrouw','radio');
+       $v1 = new vraag('zoek','Ben je fan van','radio','voetbal,hockey,schatsen,fiesten','radio');
        $v2 = new vraag ('leeftijd','Wat is je geboorte datum','text',null,'leeftijd');
        $v2 = new vraag ('omschrijving','Praat over jezelf','text',null,'leeftijd');
-       $a = array($v,$v1,$v2);
-       return $a;
+       $this->vragen = array($v,$v1,$v2);
+       return $this->vragen ;
     }
     
     function current(){
+        return current($this->vragen);
     }
     
     function previous(){
+        return previous($this->vragen);
     }
 
     function next(){
+        return previous($this->vragen);
     }
 
-    /* 
-         [2] => array('zoek','Ben je een','radio',array['man','vrouw'],'radio'),
-        [3] => array('leeftijd','Wat is je geboorte datum','text',null,'leeftijd'),
-        [4] => array('omschrijving','Praat over jezelf','text',null,'leeftijd')
-
+    function getVragen(){
+        return $this->vragen;
+    }
+   /* 
+  
      private $huidige;
     private $volgende;
     private $vorige;
@@ -36,10 +39,7 @@ class vragen{
         $this->vragen[n+1] = ('n'=> $naam, 't' => $type, 'r'=>$ant, 'v'=>$validatie);
  
   }
-  function getVragen(){
-    return $this->vragen;
-  }
-  
+   
   function verwVraag($vraag){
     $a = array_search($this-vragen,$vraag);
     if($a !== false){
