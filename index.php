@@ -1,5 +1,5 @@
 <?php
-    require('./controllers/controllerForm.php');
-    $cf = new controllerForm();
-    $cf->makeForm();
+	require ('./controllers/');
+	$vf = new viewForm();
+	$vf->makeView();
 ?>
